@@ -107,4 +107,39 @@ class Solution_2(object):
         result_list = [int(i) for i in list(str(result))]
         return self.creatLLfromList(result_list)
         
+
+class Solution_3(object):
+
+    def addTwoNumbers(self, l1, l2):
+        result = carry = 0
+        l_result_cpy = l_result = ListNode(0)
+        while(l1 != None or l2 != None):
+            if l1 == None:
+                l1 = ListNode(0)
+            if l2 == None:
+                l2 = ListNode(0)
+            
+            result = carry + l1.val + l2.val
+            carryflag = result - 10 >= 0
+            if carryflag:
+                carry = 1
+                l_result.val = result - 10
+                l_result.next = ListNode(carry)
+                l_result = l_result.next
+            else:
+                carry = 0
+                l_result.val = result
+                
+                if l1.next != None or l2.next != None:
+                    l_result.next = ListNode(0)
+                    l_result = l_result.next
+            if l1.next!=None:
+                l1 = l1.next
+            else:
+                l1 = None
+            if l2.next != None:
+                l2 = l2.next
+            else:
+                l2 = None
         
+        return l_result_cpy
