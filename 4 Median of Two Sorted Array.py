@@ -27,4 +27,21 @@ class Solution(object):
             return (result[num/2] + result[num/2 - 1])/2.0
         else:
             return result[num/2]
+
+
+class Solution_2(object):
+    def findMedianSortedArrays(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: float
+        """
         
+        nums = nums1 + nums2
+        nums.sort()
+        length = len(nums1) + len(nums2)
+        if length%2 == 0:
+            return (nums[length/2 - 1] + nums[length/2])/2.0
+        else:
+            return nums[length/2]
+            
