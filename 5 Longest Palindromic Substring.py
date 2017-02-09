@@ -1,5 +1,28 @@
 class Solution(object):
     def longestPalindrome(self, s):
+        def findPalindromeAtCurrentPosition(char_index, s):
+            i = char_index
+            j = char_index
+            while (j < len(s) - 1 and s[j] == s[j + 1]):
+                j += 1
+            while(i >= 1 and j < len(s) - 1 and s[i - 1] == s[j + 1]):
+                i -= 1
+                j += 1
+            return (j - i + 1, i, j)
+
+        maxlen = 1
+        start, end = 0, 0
+        for char_index in range(len(s)):
+            if len(s) - char_index <= maxlen/2:
+                break
+            maxlen_new, i, j = findPalindromeAtCurrentPosition(char_index, s)
+            if maxlen_new >= maxlen:
+                maxlen = maxlen_new
+                start, end = i, j
+        return s[start:end+1]
+
+class Solution_1(object):
+    def longestPalindrome(self, s):
         """
         :type s: str
         :rtype: str
@@ -62,4 +85,3 @@ class Solution(object):
             return False
         else:
             return self.isPalindromeEven(s[1:-1])
-        
