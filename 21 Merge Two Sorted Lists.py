@@ -1,3 +1,4 @@
+#TODO: write in a recursive way and reduce lines
 class ListNode(object):
     def __init__(self, x):
         self.val = x
