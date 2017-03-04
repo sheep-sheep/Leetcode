@@ -1,15 +1,15 @@
-class Solution:
-    # @param a list of integers
-    # @return an integer
-    def removeDuplicates(self, A):
-        if not A:
-            return 0
-
-        newTail = 0
-
-        for i in range(1, len(A)):
-            if A[i] != A[newTail]:
-                newTail += 1
-                A[newTail] = A[i]
-
-        return newTail + 1
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if len(nums) < 2:
+            return len(nums)
+        count = 1
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i-1]:
+                nums[count] = nums[i]
+                count += 1
+        print nums[:count], count
+        return count
