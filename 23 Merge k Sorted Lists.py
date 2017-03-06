@@ -19,3 +19,20 @@ class Solution(object):
                 curr = curr.next
                 heapq.heappush(pq, (curr.val, curr))
         return dummpy.next
+
+    
+def createList( nums):
+    dummy = ListNode(0)
+    head = dummy
+    for num in nums:
+        head.next = ListNode(num)
+        head = head.next
+    return dummy.next
+
+def printList(head):
+    nums = []
+    while(head.next!=None):
+        nums += [head.val]
+        head = head.next
+    nums += [head.val]
+    print nums
