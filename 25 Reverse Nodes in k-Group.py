@@ -5,6 +5,33 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
+        curr = head
+        count = 0
+        # This part is to move the pointer
+        while(curr != None and count != k):
+            curr = curr.next
+            count += 1
+        if count == k:
+            # This part is to divide the remaining question into subset
+            curr = self.reverseKGroup(curr, k)
+            # this part is actually reverse list
+            while(count > 0):
+                # Use 2 pointer to replace each other, this way it moves and replaces at the same time
+                tmp = head.next
+                head.next = curr
+                curr = head
+                head = tmp
+                count -= 1
+            head = curr
+        return head
+    
+class Solution1(object):
+    def reverseKGroup(self, head, k):
+        """
+        :type head: ListNode
+        :type k: int
+        :rtype: ListNode
+        """
         if k == 1:
             return head
 
