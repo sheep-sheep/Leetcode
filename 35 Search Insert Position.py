@@ -31,3 +31,14 @@ class Solution(object):
             else:
                 flag = [False]*len(nums)
                 return search(nums, 0, len(nums)-1, target, flag)
+
+            
+ # Amazingly simple solution:
+class Solution(object):
+    def searchInsert(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """       
+        return len([x for x in nums if x<target])
