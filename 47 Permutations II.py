@@ -1,4 +1,25 @@
-
+import copy
+class Solution(object):
+    def permuteUnique(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        def recursivePermute(nums, lo, result):
+            nums = copy.deepcopy(nums)
+            if lo >= len(nums)-1:
+                result.append(nums)
+                return
+            for i in range(lo, len(nums)):
+                if i!=lo and nums[i] == nums[lo]:
+                    continue
+                nums[i], nums[lo] = nums[lo], nums[i]
+                recursivePermute(nums, lo+1, result)
+        result = []
+        nums = sorted(nums)
+        recursivePermute(nums, 0, result)
+        return result
+# Get it from Permutaion I, python has its own pass by reference and pass by value!
 
 
 # 1st solution, i know the check part will need lots of time.
