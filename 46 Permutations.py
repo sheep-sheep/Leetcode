@@ -19,6 +19,15 @@ class Solution(object):
         return result
 #Recursively shuffle the list to get the new permutation.
 
+# it's the same idea with my 1st solution, however, mine failed!
+# I should put the recursive under the iterative, try it later!
+class Solution(object):
+#Insert the first number anywhere in any permutation of the remaining numbers.
+    def permute(self, nums):
+        return nums and [p[:i] + [nums[0]] + p[i:]
+                     for p in self.permute(nums[1:])
+                     for i in range(len(nums))] or [[]]
+    
 #Failed solution
 import copy
 class Solution(object):
