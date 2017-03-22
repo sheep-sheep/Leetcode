@@ -1,23 +1,24 @@
-class Solution {
-public:
-    std::vector<std::vector<int> > combinationSum2(std::vector<int> &candidates, int target) {
-        std::sort(candidates.begin(), candidates.end());
-        std::vector<std::vector<int> > res;
-        std::vector<int> combination;
-        combinationSum2(candidates, target, res, combination, 0);
-        return res;
-    }
-private:
-    void combinationSum2(std::vector<int> &candidates, int target, std::vector<std::vector<int> > &res, std::vector<int> &combination, int begin) {
-        if (!target) {
-            res.push_back(combination);
-            return;
-        }
-        for (int i = begin; i != candidates.size() && target >= candidates[i]; ++i)
-            if (i == begin || candidates[i] != candidates[i - 1]) {
-                combination.push_back(candidates[i]);
-                combinationSum2(candidates, target - candidates[i], res, combination, i + 1);
-                combination.pop_back();
-            }
-    }
-};
+class Solution(object):
+    def combinationSum2(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        def findSum(candidates, target, idx, path, res):
+            if target < 0:
+               return []
+            elif target == 0:
+                res.append(path)
+
+            for i in range(idx, len(candidates)):
+                if i > idx and candidates[i] == candidates[i-1]: #This line is the KEY!!!
+                    continue
+                findSum(candidates, target-candidates[i], i+1, path + [candidates[i]], res)
+        res = []
+        if not candidates:
+            return []
+        else:
+            candidates = sorted(candidates)
+            findSum(candidates, target, 0, [], res)
+            return res
