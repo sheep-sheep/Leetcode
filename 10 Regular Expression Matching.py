@@ -5,21 +5,19 @@ class Solution(object):
         :type p: str
         :rtype: bool
         """
-        if p == '.*':
-            return True
-        tmp = None
-        i = 0
-        for char in s:
-            if p[i] != '.':
-                if p[i] != '*':
-                    if p[i] != char:
-                        return False
+        # The status table for DP
+        status = [[False]* (len(s) + 1) for _ in range(len(p) + 1)]
+        # when s, p are empty, it's True
+        status[0][0] = True
+        for i in range(1, len(p)+1):
+            status[i][0] = i > 1 and p[i-1] == '*' and status[i-2][0]
+
+        for i in range(1, len(p) + 1):
+            for j in range(1, len(s) + 1):
+                if p[i-1] != '*':
+                    status[i][j] = status[i-1][j-1] and (p[i - 1] == s[j - 1] or p[i - 1] == '.')
                 else:
-                    if tmp != char:
-                        return False
-                    else:
-                        tmp = char
-            else:
-                tmp = char
-            i += 1
-        return True
+                    status[i][j] = status[i-2][j] or status[i-1][j]
+                    if p[i - 2] == s[j - 1] or p[i - 2] == '.':
+                        status[i][j] |= status[i][j - 1]
+        return status[-1][-1]
