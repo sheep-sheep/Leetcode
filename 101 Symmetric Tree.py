@@ -16,7 +16,8 @@ class Solution(object):
         if not root:
             return True
         return checkSymmetric(root.left, root.right)
-    
+# TODO: DO it iteratively!!!
+
 class Solution(object):
     def isSymmetric(self, root):
         """
