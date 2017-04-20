@@ -25,3 +25,10 @@ I will analyze the core idea of each case and why it belongs to backtracking pro
                   count +=1
               return tmp
           return self.permute(nums)
+
+It seems this still not the standard backtracking pattern, i will edit it later.
+
+2. When the permutation has duplicate
+  Just skip the element when we found it appears before(here we will have multiple ways to handle)
+  
+3. 
