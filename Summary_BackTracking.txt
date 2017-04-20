@@ -1,0 +1,6 @@
+Backtracking is a way to solve computational problems, wwhich incremently build candiates and abandon partial candidate(from wiki).
+I will analyze the core idea of each case and why it belongs to backtracking problem.
+
+1. Print out all permutations of a list
+  1) it needs to find sub permutations given one position/number
+  2) as long as we do a swap, it's a valid case for partial solution(a permutation)
