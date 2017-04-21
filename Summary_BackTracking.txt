@@ -6,29 +6,35 @@ I will analyze the core idea of each case and why it belongs to backtracking pro
   2) as long as we do a swap, it's a valid case for partial solution(a permutation)
   3) when the case is valid, add this candidate to a res list
   
-  class Solution(object):
-      def permute(self, nums):
-          """
-          :type nums: List[int]
-          :rtype: List[List[int]]
-          """
-          if len(nums) == 2:
-              return [[nums[1], nums[0]], [nums[0], nums[1]]]
-          elif len(nums) <= 2:
-              return [nums]
-          else:
-              count = 0
-              tmp = []
-              for num in nums:
-                  for candidate in self.permute(nums[0:count]+nums[count+1:]):
-                      tmp.append([num]+candidate)
-                  count +=1
-              return tmp
-          return self.permute(nums)
-
-It seems this still not the standard backtracking pattern, i will edit it later.
-
 2. When the permutation has duplicate
   Just skip the element when we found it appears before(here we will have multiple ways to handle)
-  
-3. 
+  class Solution(object):
+    def permuteUnique(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        def dfs(nums):
+            if len(nums) == 2:
+                return [[nums[1], nums[0]], [nums[0], nums[1]]] if nums[1]!=nums[0] else [nums]
+            elif len(nums) < 2:
+                return [nums]
+            else:
+                count = 0
+                tmp = []
+                prev = None
+                for num in nums:
+                    if prev != num:
+                        prev = num
+                    else:
+                        count +=1
+                        continue
+                    for candidate in dfs(nums[0:count]+nums[count+1:]):
+                        tmp.append([num]+candidate)
+                    count +=1
+                return tmp
+        return dfs(sorted(nums))
+    It seems this still not the standard backtracking pattern, i will edit it later.
+
+3. Next Permutation
+  This problem can't solve with backtracking idea? it requires another way of thinking and generating the sequences.
