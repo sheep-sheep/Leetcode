@@ -1,3 +1,32 @@
+# My successful solution:
+class Solution(object):
+    def permuteUnique(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        def dfs(nums):
+            if len(nums) == 2:
+                return [[nums[1], nums[0]], [nums[0], nums[1]]] if nums[1]!=nums[0] else [nums]
+            elif len(nums) < 2:
+                return [nums]
+            else:
+                count = 0
+                tmp = []
+                prev = None
+                for num in nums:
+                    if prev != num:
+                        prev = num
+                    else:
+                        count +=1
+                        continue
+                    for candidate in dfs(nums[0:count]+nums[count+1:]):
+                        tmp.append([num]+candidate)
+                    count +=1
+                return tmp
+        return dfs(sorted(nums))
+
+
 import copy
 class Solution(object):
     def permuteUnique(self, nums):
