@@ -38,3 +38,21 @@ I will analyze the core idea of each case and why it belongs to backtracking pro
 
 3. Next Permutation
   This problem can't solve with backtracking idea? it requires another way of thinking and generating the sequences.
+  
+4. Combination
+  Same idea, find each candidate in the subsolution then join with the last element of current num.
+  
+  class Solution(object):
+    def combine(self, n, k):
+        if k==1:
+            return [[i] for i in range(1,n+1)]
+        elif k==n:
+            return [[i for i in range(1,n+1)]]
+        else:
+            rs=[]
+            rs+=self.combine(n-1,k)
+            part=self.combine(n-1,k-1)
+            for ls in part:
+                ls.append(n)
+            rs+=part
+            return rs
