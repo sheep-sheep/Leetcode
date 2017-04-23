@@ -1,0 +1,23 @@
+def fib(n):
+    if n<=1: return 1
+    return fib(n-2) + fib(n-1)
+
+
+helpMap = {0: 0,
+           1: 1}
+def fib_dp_topdown(n):
+    if n not in helpMap.keys():
+        helpMap[n] = fib_dp_topdown(n-1) + fib_dp_topdown(n-2)
+    return helpMap[n]
+
+
+def fib_dp_bottomup(n):
+    if n == 0:
+        return 0
+    else:
+        prevVal, currVal = 0, 1
+        for _ in range(n):
+            fib = prevVal + currVal
+            prevVal = currVal
+            currVal = fib
+    return currVal
