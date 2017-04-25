@@ -21,3 +21,7 @@ def fib_dp_bottomup(n):
             prevVal = currVal
             currVal = fib
     return currVal
+
+
+Similar solution:
+70 Climbing Stairs.py it can use both bottom up and top down method
