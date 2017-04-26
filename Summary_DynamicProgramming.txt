@@ -24,4 +24,6 @@ def fib_dp_bottomup(n):
 
 
 Similar solution:
-70 Climbing Stairs.py it can use both bottom up and top down method
+70 Climbing Stairs: it can use both bottom up and top down method
+62 Unique Path: it build the table for all possible paths
+63 Unique Path II: just skip the obstacles
