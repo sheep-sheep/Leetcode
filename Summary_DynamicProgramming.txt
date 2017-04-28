@@ -1,3 +1,8 @@
+Dynamic Programming is a special form of divide and conquer method, it's very useful when the subproblems overlap each other.
+By using a tabular method, it stores the computed result to accelerate the computation.
+
+
+
 def fib(n):
     if n<=1: return 1
     return fib(n-2) + fib(n-1)
