@@ -1,7 +1,14 @@
+# Note of Introduction to Algorithm
 Dynamic Programming is a special form of divide and conquer method, it's very useful when the subproblems overlap each other.
 By using a tabular method, it stores the computed result to accelerate the computation.
 
+DP can be used to find an optimal solution(min or max) or the value of an optimal solution.
 
+There're 4 steps to construct a solution to DP problems:
+    1. Characterize the structure of an optimal solution
+    2. Recursively build the value of an optimal solution
+    3. Compute the value of setp 2 typically in a bottom-up fashion
+    4. Construct the solution from computed information
 
 def fib(n):
     if n<=1: return 1
