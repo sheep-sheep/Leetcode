@@ -10,6 +10,16 @@ There're 4 steps to construct a solution to DP problems:
     3. Compute the value of setp 2 typically in a bottom-up fashion
     4. Construct the solution from computed information
 
+
+Arrange foreach subproblem to be solved only once, saving its solution. It servers an example of a time-meory trade-off.
+
+1. top down with memoization:need an auxiliary array and a helper routine.
+    O(n*n): an n loop with overal all recurisve calls which is an arithmetic serie.
+   we can view it as DFS search of the subproblem graph.
+   
+2. bottom up: natural ordering of the sub-problem.
+    O(n*n): double for loops and forms arithmetic series.
+
 def fib(n):
     if n<=1: return 1
     return fib(n-2) + fib(n-1)
