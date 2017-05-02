@@ -19,6 +19,8 @@ Arrange foreach subproblem to be solved only once, saving its solution. It serve
    
 2. bottom up: natural ordering of the sub-problem.
     O(n*n): double for loops and forms arithmetic series.
+    
+How do we constructe the actual solution？ 
 
 def fib(n):
     if n<=1: return 1
