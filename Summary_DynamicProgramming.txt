@@ -55,3 +55,5 @@ Similar solution:
 62 Unique Path: it build the table for all possible paths
 63 Unique Path II: just skip the obstacles
 Rod Cutting problem
+Matrix-chain multiplication
+    Find the order to do fully parenthezied matrix multiplication which will have the lowest cost.
