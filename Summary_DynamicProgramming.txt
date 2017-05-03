@@ -21,6 +21,9 @@ Arrange foreach subproblem to be solved only once, saving its solution. It serve
     O(n*n): double for loops and forms arithmetic series.
     
 How do we constructe the actual solution？ 
+Just add another array to keep the optimal solution at current position and return both Aux and AuxSol to caller.
+
+
 
 def fib(n):
     if n<=1: return 1
