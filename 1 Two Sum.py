@@ -33,3 +33,21 @@ class Solution(object):
             except KeyError:
                 pass
             count = count + 1
+            
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        numsMap = {}
+        count = 0
+        for num in nums:
+            numsMap[num] = count
+            count += 1
+        count = 0
+        for num in nums:
+            ans = numsMap.get(target-num, None)
+            if ans:
+                return [count, ans]
+            count += 1         
