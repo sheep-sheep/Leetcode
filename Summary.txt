@@ -1,0 +1,11 @@
+Sum problems:
+  1. 2-sum:
+    Use 2 for loops to find the target. The improving part can be how to choose the FIND method in the 2nd for loop.
+    For ele in nums:
+      FIND (target-ele) in rest of nums  
+    (1) without any optimization, FIND can be O(n), and it will be O(n)*O(n)
+    (2) using Binary Search, it will be O(nlogn), thus overall will be O(n)*O(nlogn)
+    (3) using a hashmap datastructure, we assume it's O(1) to search, then it will be O(n+n)*O(1)
+  2. 3-sum:
+    If you want to handle the duplicate elements better
+    
