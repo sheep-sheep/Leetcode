@@ -57,3 +57,6 @@ Similar solution:
 Rod Cutting problem
 Matrix-chain multiplication
     Find the order to do fully parenthezied matrix multiplication which will have the lowest cost.
+
+Maximum Subarray:
+this is a optimization problem, which can be usually solved by DP. So when it comes to DP, the first thing for us to figure out is the format of the sub problem(or the state of each sub problem). 
