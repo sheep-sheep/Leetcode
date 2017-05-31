@@ -1,1 +1,12 @@
 1. Find the max depth of a Tree.
+2. Determine if a tree is balanced.
+  1) my first approach is to create a helper method to get the height.
+  2) however, i got stuck on the 2nd step about how to use my helper to get the result.
+  3) I should refer to the basic definition and do the check to use both methods.
+  We do this for each node in the tree, so the overall complexity of isBalanced will be O(N^2).
+  This is a top down approach.
+    def depth(depth, root):
+      if root:
+          return max(depth(depth+1, root.left), depth(depth+1, root.right))
+      return depth
+      
