@@ -11,3 +11,5 @@ class Solution(object):
             for j in range(1, i+1):
                 res[i] += res[j-1]*res[i-j]
         return res[n]
+
+    https://en.wikipedia.org/wiki/Catalan_number
