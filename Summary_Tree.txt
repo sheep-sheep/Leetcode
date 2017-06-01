@@ -18,4 +18,16 @@
   When creating the recusive method for Tree, think about the case for Leaf which is Root == None.
   
 We can combine the traversal and calcualate together.
-  
+
+3. Inorder, Preorder,Post-order Traveral of the Tree
+def inorder(root):
+	stack, res = [], []
+	while True:
+		while root:
+			stack.append(root) # the order of push to stack indicates the order of traversal.
+			root = root.left
+		if not stack:
+			return res
+		node = stack.pop()
+		res.append(node.val)# Operate on the top one in stack which might be left or root.
+		root = node.right
