@@ -60,3 +60,10 @@ Matrix-chain multiplication
 
 Maximum Subarray:
 this is a optimization problem, which can be usually solved by DP. So when it comes to DP, the first thing for us to figure out is the format of the sub problem(or the state of each sub problem). 
+
+Edit Distance:
+    1. Similar to Maximum Subarray, we have to define a boundry to help us solve the problem easily.
+    2. dp[i][j] is the pattern for most of the DP problem
+    3. When you finish the abstraction, don't think about the detail, you have to relate the abstraction to the solution, not to the detail case
+    4. Prepare a base case, which is 0 or i or j.
+    5. the final format will be very easy.
