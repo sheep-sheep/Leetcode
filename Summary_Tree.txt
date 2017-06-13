@@ -31,3 +31,37 @@ def inorder(root):
 		node = stack.pop()
 		res.append(node.val)# Operate on the top one in stack which might be left or root.
 		root = node.right
+# Insert Recursive
+def insert(curr, parent, val):
+    if curr is None:
+        if val < parent.val:
+            parent.left = Node(val)
+        else:
+            parent.right = Node(val)
+    else:
+        if val < curr.val:
+            insert(curr.left, curr, val)
+        else:
+            insert(curr.right, curr, val)
+
+# InOrder Traverse Recursive
+def traverse_recurr(root, res):
+    if root:
+        traverse_recurr(root.left, res)
+        res.append(root.val)
+        traverse_recurr(root.right, res)
+
+# InOrder Traverse DFS
+def traverse_stack(root):
+    stack = []
+    res = []
+    while(True):
+        while(root):
+            stack.append(root)
+            root = root.left
+        if not stack:
+            return res
+        node = stack.pop()
+        res.append(node.val)
+        root = node.right
+    return res
