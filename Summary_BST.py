@@ -130,3 +130,24 @@ def delete(root, val):
         else:
             parent.right = curr.right if curr.right else curr.left
     return root
+
+# BFS with Queue
+# Use this queue you can print out all nodes at each level, i think is a level order traverse!
+def bfs(root):
+    from Queue import Queue
+    q = Queue()
+    res, final= [],[]
+    q.put(root)
+    while(not q.empty()):
+        n = q.qsize()
+        while n:
+            node = q.get()
+            res.append(node.val)
+            if node.left:
+                q.put(node.left)
+            if node.right:
+                q.put(node.right)
+            n -= 1
+        print res
+        final.append(res)
+        res=[]
