@@ -151,3 +151,12 @@ def bfs(root):
         print res
         final.append(res)
         res=[]
+
+# get height of the BST tree
+# 1. using the DFS to return the height, it's a simple DP solution
+# 2. using the BFS to return the level which is the height
+def height(root):
+    if root is None:
+        return 0
+    else:
+        return max(height(root.left), height(root.right))+1
