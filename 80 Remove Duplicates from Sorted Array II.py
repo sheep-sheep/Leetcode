@@ -10,3 +10,4 @@ class Solution(object):
                 nums[i] = n
                 i += 1
         return i
+# when you are asked about the in-place, sorted array problem, think about the assign value directly for array!
