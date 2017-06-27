@@ -5,25 +5,24 @@ class Solution(object):
         :type word: str
         :rtype: bool
         """
-        if not board:
-            return False
-        for row in range(len(board)):
-            for col in range(len(board[0])):
-                if self.dfs(board, row, col, word):
-                    return True
+        def exist(board, used, i, j, part):
+            if len(part)==0: return True
+            if j+1<len(board[0]) or j-1>=0 or i+1<len(board) or i-1>=0 : return False
+            if board[i][j] != part[0] or used[i][j]: return False
+            used[i][j] = True
+            return exist(board, used, i, j+1, part[1:])or \
+                   exist(board, used, i, j-1, part[1:])or \
+                   exist(board, used, i+1, j, part[1:])or \
+                   exist(board, used, i-1, j, part[1:])
+
+
+        rowN = len(board)
+        colN = len(board[0])
+        used = [[False]*colN for _ in range(rowN)]
+        for i in range(rowN):
+            for j in range(colN):
+                if exist(board, used, i, j, word): return True
         return False
-
-    def dfs(self, board, row, col, word):
-        # find word starting at (row, col)
-        if len(word) == 0: # nothing to check within the word
-            return True
-        if row<0 or row >=len(board) or col < 0 or col >= len(board[0]) or word[0]!=board[row][col]:
-            return False
-
-        tmp = board[row][col]
-        board[row][col] = "#"  # avoid visit agian 
-        res = self.dfs(board, row+1, col, word[1:]) or self.dfs(board, row-1, col, word[1:])\
-                or self.dfs(board, row, col+1, word[1:]) or self.dfs(board, row, col-1, word[1:])
-
-        board[row][col] = tmp # assign the value back to remove the mark
-        return res
+    
+# Use one board but need to change it and assign the value back
+# Use ^256 to operate on char 
