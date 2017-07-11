@@ -87,3 +87,8 @@ Edit Distance:
     3. When you finish the abstraction, don't think about the detail, you have to relate the abstraction to the solution, not to the detail case
     4. Prepare a base case, which is 0 or i or j.
     5. the final format will be very easy.
+    
+Possible DP questions:
+1. Count of solutions
+2. Find the MAX or MIN
+3. Optimal solution for one game
