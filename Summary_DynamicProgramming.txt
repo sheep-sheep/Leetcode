@@ -5,10 +5,10 @@ By using a tabular method, it stores the computed result to accelerate the compu
 DP can be used to find an optimal solution(min or max) or the value of an optimal solution.
 
 There're 4 steps to construct a solution to DP problems:
-    1. Characterize the structure of an optimal solution
-    2. Recursively build the value of an optimal solution
-    3. Compute the value of setp 2 typically in a bottom-up fashion
-    4. Construct the solution from computed information
+    1. Characterize the structure of an optimal solution(How to represent the problem using "last step" and "subproblem")
+    2. Recursively build the value of an optimal solution(How to use a function to build the relationship)
+    3. Compute the value of setp 2 typically in a bottom-up fashion(Initial Value[0, INF])
+    4. Construct the solution from computed information(Bottom up)
 
 
 Arrange foreach subproblem to be solved only once, saving its solution. It servers an example of a time-meory trade-off.
@@ -91,4 +91,4 @@ Edit Distance:
 Possible DP questions:
 1. Count of solutions
 2. Find the MAX or MIN
-3. Optimal solution for one game
+3. Optimal solution for one game(Existence)
