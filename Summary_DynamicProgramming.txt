@@ -59,13 +59,8 @@ Coin Change problem:
 # Top-down approach is to apply memoziation to the recursive call
 class Solution(object):
     def coinChange(self, coins, amount):
-        """
-        :type coins: List[int]
-        :type amount: int
-        :rtype: int
-        """
         inf = float('inf')
-        dp = [0]+[inf]*amount
+        dp = [0]+[inf]*amount # initial edge case 0 is for construct the following values.
         for i in range(1, amount+1):
             dp[i] = min(dp[i-coin]+1 if (i-coin)>=0 else inf for coin in coins)
         return dp[-1] if dp[amount]!=inf else -1
