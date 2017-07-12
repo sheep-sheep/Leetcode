@@ -87,3 +87,5 @@ Possible DP questions:
 1. Count of solutions
 2. Find the MAX or MIN
 3. Optimal solution for one game(Existence)
+4. Unituqe Paths
+5. Jump game
