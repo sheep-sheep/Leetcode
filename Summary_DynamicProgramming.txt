@@ -89,3 +89,8 @@ Possible DP questions:
 3. Optimal solution for one game(Existence)
 4. Unituqe Paths
 5. Jump game
+
+How do you optimize to save space?
+    1. You have to observe the function to check the relationship
+    2. Convert 2D to 1D
+    3. Rotate the array to only use 2 Row
