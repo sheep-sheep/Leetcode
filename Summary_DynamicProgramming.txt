@@ -101,7 +101,18 @@ Possible DP questions:
             return findPath(m-1, n-1)
     Fail: Time Limit Exceeded! Input: (23, 12)
     
-    (2) Recursive with Memoization(Top-Down DP):
+    (2) Factorial:
+    class Solution(object):
+        def uniquePaths(self, m, n):
+        totalMoves = m-1 + n-1
+        import math
+        def nCr(total,r):
+            f = math.factorial
+            return f(total)/f(r)/f(total-r)
+        return nCr(totalMoves, min([m,n])-1)
+    Pass: 36.3%
+    
+    (3) Recursive with Memoization(Top-Down DP):
     class Solution(object):
         def uniquePaths(self, m, n):
             def findPath(m, n, dp):
@@ -123,7 +134,7 @@ Possible DP questions:
             dp =[[0 for _ in range(m)] for _ in range(n)]
             return findPath(m-1, n-1, dp)
     Pass: 51%          
-    (3) Bottom-up DP:
+    (4) Bottom-up DP:
     class Solution(object):
         def uniquePaths(self, m, n):
             dp =[[0 for _ in range(m+1)] for _ in range(n+1)]
@@ -133,7 +144,7 @@ Possible DP questions:
                     if i!=1 or j!=1:
                         dp[i][j] = dp[i-1][j] + dp[i][j-1]
             return dp[-1][-1]
-    Pass: 76.8%            
+    Pass: 76.8%
     
 5. Jump game
 
