@@ -88,6 +88,21 @@ Possible DP questions:
 2. Find the MAX or MIN
 3. Optimal solution for one game(Existence)
 4. Unituqe Paths
+    (1) Recursive
+    class Solution(object):
+        def uniquePaths(self, m, n):
+            def findPath(m, n):
+                if m < 0 or n <0:
+                    return 0
+                elif m==0 and n==0:
+                    return 1
+                else:
+                    return findPath(m-1, n)+findPath(m, n-1)
+            return findPath(m-1, n-1)
+    Time Limit Exceeded! Input: (23, 12)
+    
+    (2) Recursive with Memoization:
+    
 5. Jump game
 
 How do you optimize to save space?
