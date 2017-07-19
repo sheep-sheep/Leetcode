@@ -152,3 +152,6 @@ How do you optimize to save space?
     1. You have to observe the function to check the relationship
     2. Convert 2D to 1D
     3. Rotate the array to only use 2 Row
+    
+In DP, I have to get used to the notation:
+    F[i] means the status for a[0] to a[i-1]. it must be the relationship between i and i-1, the 0 is reserved for 0 case.
