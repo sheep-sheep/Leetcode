@@ -25,3 +25,5 @@ class Solution(object):
         for c in result:
             final += chr(ord('0')+c)
         return final
+
+    # I don't even remember it
