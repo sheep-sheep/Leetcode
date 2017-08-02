@@ -39,3 +39,20 @@ class Solution(object):
         if not heights:
             return 0
         return maxArea(heights, 0, len(heights)-1) #Typical binary search/divide and conquer
+    
+class Solution(object):
+    def largestRectangleArea(self, heights):
+        """
+        :type heights: List[int]
+        :rtype: int
+        """
+        heights = [0] + heights + [0] # make the stack not empty,
+                                      # make the last one to be smallest height.
+        ind_stack = [0] # 2nd stack to save index of height
+        area = 0
+        for i in range(1, len(heights)):
+            while(heights[i]<heights[ind_stack[-1]]):
+                prev_ind = ind_stack.pop()
+                area = max(area, heights[prev_ind]*(i-ind_stack[-1]-1))
+            ind_stack.append(i)
+        return area    
