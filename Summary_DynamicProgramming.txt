@@ -158,3 +158,13 @@ In DP, I have to get used to the notation:
     
 6. 背包问题 ，重量作为状态量，状态量要作为DP数组的下标？
 如何解释?
+1. 确定状态
+2. 子问题
+3. 转移方程
+4. 计算顺序(初始化，以及invalid case）
+
+5. 压缩空间
+for i in enumerate(n):
+    for w in enumerate(m):
+        # updated f[w] : f[i][w]
+        # orignal f[w] : f[i-1][w]
