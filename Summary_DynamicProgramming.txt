@@ -168,3 +168,7 @@ for i in enumerate(n):
     for w in enumerate(m):
         # updated f[w] : f[i][w]
         # orignal f[w] : f[i-1][w]
+
+区间型，每个状态size会变；
+最值型，每次要取最大最小；
+KSum，先搞定背包，在搞定Ksum
