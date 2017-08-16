@@ -172,3 +172,8 @@ for i in enumerate(n):
 区间型，每个状态size会变；
 最值型，每次要取最大最小；
 KSum，先搞定背包，在搞定Ksum
+
+
+You don't have to initialize the DP with N+1, the important issue is to initialize base case.
+think about N-1.
+
