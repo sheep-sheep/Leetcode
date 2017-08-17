@@ -18,3 +18,11 @@ class Solution(object):
                 dp[pos] = max(dp[pos-1], price-buy_min)
 
         return dp[-1]
+
+# max profit means the last sell - first buy, the difference is max.
+# and we need a variable to record the minmum buy value, and since the buy and sell is in order,
+# if we go from left to right, we can always find the last sell and first buy difference.
+
+# Then we use current price minus first buy min, then we will have max profit at current position.
+
+# This doesn't feel like a DP, oh, yes, it is, becasue i use the variable to reduce the complexity!
