@@ -26,3 +26,19 @@ class Solution(object):
 # Then we use current price minus first buy min, then we will have max profit at current position.
 
 # This doesn't feel like a DP, oh, yes, it is, becasue i use the variable to reduce the complexity!
+
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        if not prices:
+            return 0
+        profit_max =0 
+        buy_min = float('inf')
+        for (pos, price) in enumerate(prices):
+                buy_min = min(buy_min, price)
+                profit_max = max(profit_max, price-buy_min)
+        return profit_max
+    
