@@ -1,3 +1,4 @@
+3. my own DP
 class Solution(object):
     def maxProfit(self, prices):
         """
@@ -26,7 +27,7 @@ class Solution(object):
 # Then we use current price minus first buy min, then we will have max profit at current position.
 
 # This doesn't feel like a DP, oh, yes, it is, becasue i use the variable to reduce the complexity!
-
+2. reduce memory
 class Solution(object):
     def maxProfit(self, prices):
         """
@@ -41,4 +42,23 @@ class Solution(object):
                 buy_min = min(buy_min, price)
                 profit_max = max(profit_max, price-buy_min)
         return profit_max
-    
+
+1. Standard DP    
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        if not prices:
+            return 0
+        # initialize
+        n = len(prices) + 1
+        dp = [[0] * n for _ in range(n)]
+
+        # base case:dp[0][0] is 0
+        for i in range(1, n):
+            for j in range(1, n):
+                if i < j:  # this is the valid buy&sell case
+                    dp[i][j] = max(dp[i][j - 1], prices[j-1] - prices[i-1])
+        return max([profit[-1] for profit in dp])
