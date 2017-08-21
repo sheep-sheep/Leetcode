@@ -21,3 +21,19 @@ class Solution(object):
 # 4. since 3*3 > 2*2*2, we should use 3 as the factor and break them into 3 as many as possible
 
 # then the question will be transformed to how do you break the number to get 3s.
+
+
+# Use DP:
+class Solution(object):
+    def integerBreak(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        dp = [i for i in range(n+1)]
+        dp[-1] = 0 # don't initilize the current dp position
+        for i in range(2, n+1):
+            for j in range(1, i/2+1): # This is one important step, because you have to divdie it into 2 parts
+                dp[i] = max(dp[i], dp[j]*dp[i-j])
+        
+        return dp[-1]
