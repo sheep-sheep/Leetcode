@@ -26,3 +26,19 @@ class Solution(object):
         return dfs(nums[0], nums)
 
 # Overall idea is correct but i made a mistake at summing part
+
+
+class Solution(object):
+    def pathSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        res = {}  # sum at depth h, pos i
+        depth = {}
+
+        for num in nums[::-1]:  # this is smart, it's starting from leaves
+            level, pos, value = num / 100, num / 10 % 10, num % 10
+            depth[(level, pos)] = max(1, depth.get((level + 1, pos * 2 - 1), 0) + depth.get((level + 1, pos * 2),0))  # get height of current level
+            res[(level, pos)] = res.get((level + 1, pos * 2 - 1), 0) + res.get((level, pos * 2), 0) + depth[(level, pos)] * value
+        return res.get((1, 1), 0)
