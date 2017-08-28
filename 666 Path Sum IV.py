@@ -35,7 +35,7 @@ class Solution(object):
         :rtype: int
         """
         res = {}  # sum at depth h, pos i
-        depth = {}
+        depth = {} # it's not depth, it a flag to see if there's a node at this level
 
         for num in nums[::-1]:  # this is smart, it's starting from leaves
             level, pos, value = num / 100, num / 10 % 10, num % 10
