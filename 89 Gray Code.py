@@ -16,3 +16,7 @@ class Solution(object):
             for k in reversed(range(size)):
                 res.append(2**i * 1 + res[k])
         return res
+
+    
+    
+    # 2**i can be replaced by 1<<i; and + can be replaced by |
