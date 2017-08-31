@@ -4,14 +4,15 @@ class Solution(object):
         :type n: int
         :rtype: List[int]
         """
-        def convertNum(bits):
-            N = len(bits)
-            res = 0
-            for bit in bits:
-                res += 2^(N-1)*bit
-                N -= 1
-            return res
+        # the correct way should be find the relationship between n=2
+        # and n=3
+
+        # the algorith will be appending 1 or 0 to the previous list
         
-        res = [0]*n
-        for i in range(1, n+1):
-            res[i] = res[i-1]*2+1
+        # exponetional in python is **
+        res = [0]
+        for i in range(n):
+            size = len(res)
+            for k in reversed(range(size)):
+                res.append(2**i * 1 + res[k])
+        return res
