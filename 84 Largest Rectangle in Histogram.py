@@ -4,42 +4,24 @@ class Solution(object):
         :type heights: List[int]
         :rtype: int
         """
-        def maxMidArea(heights, left, mid, right):
-            i = mid
-            j = mid+1
-            area = 0
-            h = min(heights[i], heights[j]);
-            while( i >= left and j <= right):
-                h = min(h, heights[i], heights[j])
-                area = max(area, (j-i+1)*h)
-                if i == left:
-                    j+=1
-                elif j == right:
-                    i-=1
-                else:
-                    # if left and right haven't reached boundary,
-                    # choose the largest height side which will be
-                    # more likely increase the area.
-                    if heights[i-1] > heights[j+1]:
-                        i -= 1
-                    else:
-                        j += 1
-            return area
+        # for each bar, find the maxArea of the rectangle with current bar as the min height
+        # however this solution can't handle the worst case
+        # it's still doing the same thing and even worse.
+        area = 0
+        for idx in range(len(heights)):
+            left = idx - 1
+            right = idx + 1
+            width = 1
+            while (left >= 0 and heights[left] >= heights[idx]):
+                width += 1
+                left -= 1
+            while (right <= len(heights) - 1 and heights[right] >= heights[idx]):
+                width += 1
+                right +=1
+            area = max(area, width * heights[idx])
+        return area
 
-        def maxArea(heights, left, right):
-            if left == right:
-                return heights[left]*1
-
-            mid = left + (right-left)/2
-            leftArea = maxArea(heights, left, mid)
-            rightArea = maxArea(heights, mid+1, right)
-            midArea = maxMidArea(heights, left, mid, right)
-            return max(leftArea, rightArea, midArea)
-
-        if not heights:
-            return 0
-        return maxArea(heights, 0, len(heights)-1) #Typical binary search/divide and conquer
-    
+# this stack solution is recording the starting index and ending index
 class Solution(object):
     def largestRectangleArea(self, heights):
         """
