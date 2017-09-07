@@ -34,3 +34,4 @@ class Solution(object):
         return res
     
    # this problem can be rewritten to print from center to outside.
+   # also this problem can be rewritten to set the matrix given the N
