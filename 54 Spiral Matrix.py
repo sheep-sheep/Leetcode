@@ -24,3 +24,21 @@ class Solution(object):
                     res += [matrix[i][colBegin]]
             colBegin+=1
         return res
+rowEnd = row_n-1
+res = []
+while(colStart < colEnd):
+    res.append(matrix[rowStart][colStart])
+    colStart += 1
+rowStart += 1
+while(rowStart < rowEnd):
+    res.append(matrix[rowStart][colStart])
+    rowStart += 1
+colStart -= 1
+while(colStart >= 0):
+    res.append(matrix[rowStart][colStart])
+    colStart -= 1
+rowStart -= 1
+while(rowStart >= 0):
+    res.append(matrix[rowStart][colStart])
+    rowStart -= 1
+colStart += 1
