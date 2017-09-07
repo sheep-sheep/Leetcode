@@ -4,41 +4,33 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: List[int]
         """
+        if len(matrix)==0:
+            return []
+        colStart = 0
+        colEnd = len(matrix[0])-1
+        rowStart = 0
+        rowEnd = len(matrix)-1
         res = []
-        if not matrix:
-            return res
-        rowBegin, rowEnd, colBegin, colEnd = 0, len(matrix)-1, 0, len(matrix[0])-1
-        while(rowBegin<=rowEnd and colBegin<=colEnd):
-            for i in range(colBegin, colEnd+1):
-                res += [matrix[rowBegin][i]]
-            rowBegin+=1
-            for i in range(rowBegin, rowEnd+1):
-                res += [matrix[i][colEnd]]
+        while(colStart<=colEnd and rowStart<=rowEnd):
+            # top line
+            for i in range(colStart, colEnd+1):
+                res.append(matrix[rowStart][i])
+            rowStart+=1
+            # right line
+            for i in range(rowStart, rowEnd+1):
+                res.append(matrix[i][colEnd])
             colEnd-=1
-            if rowBegin<= rowEnd:
-                for i in range(colEnd, colBegin-1, -1):
-                    res += [matrix[rowEnd][i]]
+            # bottom line
+            if rowStart<= rowEnd:
+                for i in range(colEnd, colStart-1, -1):
+                    res.append(matrix[rowEnd][i])
             rowEnd-=1
-            if colBegin<=colEnd:
-                for i in range(rowEnd, rowBegin-1, -1):
-                    res += [matrix[i][colBegin]]
-            colBegin+=1
+            # left line
+            if colStart<=colEnd:
+                for i in range(rowEnd, rowStart-1, -1):
+                    res.append(matrix[i][colStart])
+            colStart+=1
+
         return res
-rowEnd = row_n-1
-res = []
-while(colStart < colEnd):
-    res.append(matrix[rowStart][colStart])
-    colStart += 1
-rowStart += 1
-while(rowStart < rowEnd):
-    res.append(matrix[rowStart][colStart])
-    rowStart += 1
-colStart -= 1
-while(colStart >= 0):
-    res.append(matrix[rowStart][colStart])
-    colStart -= 1
-rowStart -= 1
-while(rowStart >= 0):
-    res.append(matrix[rowStart][colStart])
-    rowStart -= 1
-colStart += 1
+    
+   # this problem can be rewritten to print from center to outside.
