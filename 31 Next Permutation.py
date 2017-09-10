@@ -56,3 +56,5 @@ class Solution(object):
         print nums
 
 Solution().nextPermutation([2, 3, 1])
+
+# i need to update this too
