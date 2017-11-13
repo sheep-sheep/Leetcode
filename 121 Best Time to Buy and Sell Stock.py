@@ -62,3 +62,6 @@ class Solution(object):
                 if i < j:  # this is the valid buy&sell case
                     dp[i][j] = max(dp[i][j - 1], prices[j-1] - prices[i-1])
         return max([profit[-1] for profit in dp])
+    
+
+# 2nd is the right way to do, i was so bad at that time
