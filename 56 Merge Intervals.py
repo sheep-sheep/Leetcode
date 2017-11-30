@@ -10,10 +10,11 @@ class Solution(object):
         :type intervals: List[Interval]
         :rtype: List[Interval]
         """
-        out = []
-        for i in sorted(intervals, key=lambda i: i.start):
-            if out and i.start <= out[-1].end:
-                out[-1].end = max(out[-1].end, i.end)
+        res = []
+        intervals = sorted(intervals, key = lambda x: x.start)
+        for i in range(len(intervals)):
+            if res and intervals[i].start <= res[-1].end:
+                res[-1].end = max(res[-1].end, intervals[i].end)
             else:
-                out += i,
-        return out
+                res.append(intervals[i])
+        return res
