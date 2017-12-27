@@ -39,3 +39,32 @@ class Solution(object):
 #                     return num
 #         num = num - 1
 #     return 1
+
+
+# Previous solution was so bad
+
+        class Solution(object):
+            def lengthOfLongestSubstring(self, s):
+                s = list(s)
+                helper = {}
+                begin = 0
+                end = 0
+                count = 0
+                maxLen = 0
+                while end < len(s):
+                    if s[end] not in helper:
+                        helper[s[end]] = 1
+                    else:
+                        helper[s[end]] += 1
+                        count += 1
+                    end += 1
+                    
+                    while count > 0:
+                        if helper[s[begin]] > 1:
+                            count -= 1
+                        helper[s[begin]] -= 1
+                        if helper[s[begin]] == 0:
+                            del helper[s[begin]]
+                        begin += 1
+                    maxLen = max(maxLen, end - begin)
+                return maxLen  
