@@ -15,3 +15,24 @@ class Solution(object):
             res += min(max_left, max_right) - h
 
         return res
+
+    # Solution 2, use DP to reduce the loop to get height
+    def trap(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        if not height:
+            return 0
+        res = 0
+        max_left = [0] * (len(height) + 1)
+        max_right = [0] * (len(height) + 1)
+        for i in range(1, len(height)+1):
+            max_left[i] = max(max_left[i-1], height[i-1])
+        max_right[len(height)] = height[-1]
+        for i in range(len(height)-1, -1, -1):
+            max_right[i] = max(max_right[i+1], height[i])
+        for (i, h) in enumerate(height):
+            res += min(max_left[i+1], max_right[i]) - h
+
+        return res
