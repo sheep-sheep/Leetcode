@@ -2,8 +2,6 @@
 Dynamic Programming is a special form of divide and conquer method, it's very useful when the subproblems overlap each other.
 By using a tabular method, it stores the computed result to accelerate the computation.
 
-DP can be used to find an optimal solution(min or max) or the value of an optimal solution.
-
 There're 4 steps to construct a solution to DP problems:
     1. Characterize the structure of an optimal solution(How to represent the problem using "last step" and "subproblem")
     2. Recursively build the value of an optimal solution(How to use a function to build the relationship)
